@@ -9,54 +9,57 @@ Height = 700
 Width = 800
 
 root = Tk()
+image = Image.open('FBackground.jpg')
+photo_image = ImageTk.PhotoImage(image)
+label = tk.Label(root, image=photo_image)
+label.pack()
 
 
-def Display_Balloon():
-    image1 = Image.open("Balloon.jpg")
-    test = ImageTk.PhotoImage(image1)
-    label = tkinter.Label(image=test)
-    label.image = test
-    label.place(x=150, y=190)
-
-
-def Display_Waterfall():
-    image1 = Image.open("Waterfall.jpg")
-    test = ImageTk.PhotoImage(image1)
-    label = tkinter.Label(image=test)
-    label.image = test
-    label.place(x=150, y=190)
-
-
-def Display_Mountain():
-    image1 = Image.open("Mountain.jpg")
-    image2 = image1.resize((200, 200), Image.ANTIALIAS)
+def Display_Pizza():
+    image1 = Image.open("Pizza.jpg")
+    image2 = image1.resize((500, 300), Image.ANTIALIAS)
     test = ImageTk.PhotoImage(image2)
     label = tkinter.Label(image=test)
     label.image = test
-    label.place(x=150, y=190)
+    label.place(x=400, y=250)
+
+
+def Display_Burger():
+    image1 = Image.open("Burger.jpg")
+    image2 = image1.resize((500, 300), Image.ANTIALIAS)
+    test = ImageTk.PhotoImage(image2)
+    label = tkinter.Label(image=test)
+    label.image = test
+    label.place(x=400, y=250)
+
+
+def Display_Pasta():
+    image1 = Image.open("Pasta.jpeg")
+    image2 = image1.resize((500, 300), Image.ANTIALIAS)
+    test = ImageTk.PhotoImage(image2)
+    label = tkinter.Label(image=test)
+    label.image = test
+    label.place(x=400, y=250)
 
 
 def Fuction_No():
     Bcanvas = tk.Canvas(root, height=Height, width=Width)
     Bcanvas.pack()
 
-    Bframe = tk.Frame(root, bg='#80c1ff')
-    Bframe.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.9)
-
-    DAB = tk.Button(Bframe, text='Balloon', font=('Courier', 18, 'bold'), command=Display_Balloon)
+    DAB = tk.Button(root, text='Pizza', font=('Courier', 18, 'bold'), command=Display_Pizza)
     DAB.place(relx=0.1, rely=0.85, relwidth=0.2, relheight=0.1)
-    HAPPY = tk.Button(Bframe, text='Waterfall', font=('Courier', 18, 'bold'), command=Display_Waterfall)
+    HAPPY = tk.Button(root, text='Burger', font=('Courier', 18, 'bold'), command=Display_Burger)
     HAPPY.place(relx=0.4, rely=0.85, relwidth=0.2, relheight=0.1)
-    SAD = tk.Button(Bframe, text='Mountain', font=('Courier', 18, 'bold'), command=Display_Mountain)
+    SAD = tk.Button(root, text='Pasta', font=('Courier', 18, 'bold'), command=Display_Pasta)
     SAD.place(relx=0.7, rely=0.85, relwidth=0.2, relheight=0.1)
 
-    Title = tk.Label(Bframe, text='CLICK ONE OF THE BUTTONS', font=('Courier', 24, 'bold'), bg='#80c1ff')
+    Title = tk.Label(root, text='CLICK TO PREVIEW OR BUY', font=('Courier', 24, 'bold'), bg='grey')
     Title.place(relx=0.1, rely=0.025, relwidth=0.8, relheight=0.1)
 
 
 def Fuction_Yes():
     engine = pyttsx3.init()
-    engine.say("Which of the following images would you like to buy? Waterfall, Mountain or the Balloon")
+    engine.say("Which of the following food items would you like to buy? Pizza, Burger or the Pasta")
     engine.runAndWait()
     r = sr.Recognizer()
     print("Please Talk")
@@ -69,15 +72,12 @@ def Fuction_Yes():
     canvas = tk.Canvas(root, height=Height, width=Width)
     canvas.pack()
 
-    frame = tk.Frame(root, bg='#80c1ff')
-    frame.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.9)
-
-    if text == "balloon" or text == "Balloon":
-        Display_Balloon()
-    elif text == "waterfall" or text == "Waterloo":
-        Display_Waterfall()
-    elif text == "mountain" or text == "Mountain":
-        Display_Mountain()
+    if text == "Pizza" or text == "pizza":
+        Display_Pizza()
+    elif text == "Burger" or text == "burger":
+        Display_Burger()
+    elif text == "Pasta" or text == "pasta":
+        Display_Pasta()
     else:
         print("Didn't recognize what you said")
 
